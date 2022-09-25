@@ -1,7 +1,8 @@
 import logging
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
-from telegram.ext import Application, CallbackQueryHandler, CommandHandler, ContextTypes
+from telegram.ext import Application, CallbackQueryHandler, CommandHandler, ContextTypes, Updater
 
+TOKEN = '5649456887:AAFmc6DMtiEkyl3Oe91NJ0o_CA0px7X0faM'
 
 welcome_markup = InlineKeyboardMarkup([
     [InlineKeyboardButton("💊 Drugs", callback_data="drugs")],
@@ -65,13 +66,15 @@ Kokain - 2000 TL'''
 
 
 def main() -> None:
-    application = Application.builder().token(
-        "5649456887:AAFmc6DMtiEkyl3Oe91NJ0o_CA0px7X0faM").build()
+    updater = Updater(TOKEN, use_context=True)
+    
+    application = updater.dispatcher
 
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CallbackQueryHandler(button))
 
-    application.run_polling()
+    updater.start_webhook(listen="0.0.0.0",port=80,url_path=TOKEN)
+    updater.bot.setWebhook('https://illegalorganizasyon.herokuapp.com/' + TOKEN)
 
 
 if __name__ == "__main__":
