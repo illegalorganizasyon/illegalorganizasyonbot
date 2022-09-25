@@ -73,9 +73,10 @@ def main() -> None:
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CallbackQueryHandler(button))
 
-    updater.start_webhook(listen="0.0.0.0",port=5000,url_path=TOKEN)
+    updater.start_webhook(listen="0.0.0.0",port=80,url_path=TOKEN)
     updater.bot.setWebhook('https://illegalorganizasyon.herokuapp.com/' + TOKEN)
 
 
 if __name__ == "__main__":
+    print('hi')
     main()
