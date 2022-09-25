@@ -16,11 +16,11 @@ welcome_markup = InlineKeyboardMarkup([
 ])
 
 
-async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+async def start(update: Update, context) -> None:
     await update.message.reply_text(text='İllegal Market', reply_markup=welcome_markup)
 
 
-async def button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+async def button(update: Update, context) -> None:
     back_markup = InlineKeyboardMarkup([
         [InlineKeyboardButton("◀️ Geri", callback_data="back")]
     ])
