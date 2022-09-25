@@ -38,10 +38,10 @@ Kokain - 2000 TL'''
         await query.edit_message_text(text=text)
         await query.edit_message_reply_markup(reply_markup=back_markup)
     elif query.data == 'guns':
-	text = '''CNC Yapım 7.65mm Tabanca 4500 TL
+        text = '''CNC Yapım 7.65mm Tabanca 4500 TL
 7.65 Mermi MKE Kutu 650 TL'''
-	
-	await query.edit_message_text(text=text)
+
+        await query.edit_message_text(text=text)
         await query.edit_message_reply_markup(reply_markup=back_markup)
     elif query.data == 'drugs2':
         pass
@@ -65,7 +65,8 @@ Kokain - 2000 TL'''
 
 
 def main() -> None:
-    application = Application.builder().token("5649456887:AAFmc6DMtiEkyl3Oe91NJ0o_CA0px7X0faM").build()
+    application = Application.builder().token(
+        "5649456887:AAFmc6DMtiEkyl3Oe91NJ0o_CA0px7X0faM").build()
 
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CallbackQueryHandler(button))
